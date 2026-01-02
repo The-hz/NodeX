@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.modules.impl.render.NameTags;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -21,7 +21,7 @@ public class MixinEntityRenderer<T extends Entity> {
       cancellable = true
    )
    private void renderNameTag(T pEntity, Component pDisplayName, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight, CallbackInfo ci) {
-      if (pEntity instanceof Player && Naven.getInstance().getModuleManager().getModule(NameTags.class).isEnabled()) {
+      if (pEntity instanceof Player && Client.getInstance().getModuleManager().getModule(NameTags.class).isEnabled()) {
          ci.cancel();
       }
    }

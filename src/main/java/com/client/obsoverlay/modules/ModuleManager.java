@@ -1,6 +1,6 @@
 package com.client.obsoverlay.modules;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.EventTarget;
 import com.client.obsoverlay.events.impl.EventKey;
 import com.client.obsoverlay.events.impl.EventMouseClick;
@@ -77,7 +77,7 @@ public class ModuleManager {
          throw new RuntimeException(var2);
       }
 
-      Naven.getInstance().getEventManager().register(this);
+      Client.getInstance().getEventManager().register(this);
    }
 
    private void initModules() {

@@ -1,6 +1,6 @@
 package com.client.obsoverlay.ui;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.EventTarget;
 import com.client.obsoverlay.events.impl.EventShader;
 import com.client.obsoverlay.modules.Category;
@@ -62,27 +62,27 @@ public class ClickGUI extends Screen {
    HashMap<Category, List<Module>> modules = new HashMap<Category, List<Module>>() {
       {
          for (Category value : Category.values()) {
-            this.put(value, Naven.getInstance().getModuleManager().getModulesByCategory(value));
+            this.put(value, Client.getInstance().getModuleManager().getModulesByCategory(value));
          }
       }
    };
    HashMap<Module, SmoothAnimationTimer> modulesAnimation = new HashMap<Module, SmoothAnimationTimer>() {
       {
-         for (Module value : Naven.getInstance().getModuleManager().getModules()) {
+         for (Module value : Client.getInstance().getModuleManager().getModules()) {
             this.put(value, new SmoothAnimationTimer(0.0F, 255.0F));
          }
       }
    };
    HashMap<Module, SmoothAnimationTimer> modulesToggleAnimation = new HashMap<Module, SmoothAnimationTimer>() {
       {
-         for (Module value : Naven.getInstance().getModuleManager().getModules()) {
+         for (Module value : Client.getInstance().getModuleManager().getModules()) {
             this.put(value, new SmoothAnimationTimer(0.0F));
          }
       }
    };
    HashMap<Value, SmoothAnimationTimer> valuesAnimation = new HashMap<Value, SmoothAnimationTimer>() {
       {
-         for (Value value : Naven.getInstance().getValueManager().getValues()) {
+         for (Value value : Client.getInstance().getValueManager().getValues()) {
             this.put(value, new SmoothAnimationTimer(0.0F));
          }
       }
@@ -117,12 +117,12 @@ public class ClickGUI extends Screen {
    private TimeHelper valuesAlphaTimer = new TimeHelper();
 
    public ClickGUI() {
-      super(Component.nullToEmpty("Naven"));
+      super(Component.nullToEmpty("Client"));
    }
 
    public void onClose() {
-      Naven.getInstance().getFileManager().save();
-      Naven.getInstance().getEventManager().unregister(this);
+      Client.getInstance().getFileManager().save();
+      Client.getInstance().getEventManager().unregister(this);
       super.onClose();
    }
 
@@ -138,7 +138,7 @@ public class ClickGUI extends Screen {
                   this.hoveringModule.toggle();
                } else if (mouseButton == 1) {
                   this.selectedModule = this.hoveringModule;
-                  this.renderValues = Naven.getInstance().getValueManager().getValuesByHasValue(this.hoveringModule);
+                  this.renderValues = Client.getInstance().getValueManager().getValuesByHasValue(this.hoveringModule);
                   this.moduleValuesMotionY.target = this.moduleValuesMotionY.value = 0.0F;
                }
             }
@@ -238,7 +238,7 @@ public class ClickGUI extends Screen {
    }
 
    protected void init() {
-      Naven.getInstance().getEventManager().register(this);
+      Client.getInstance().getEventManager().register(this);
       this.valuesAnimation.forEach((value, animation) -> {
          if (value.getValueType() == ValueType.MODE) {
             animation.value = 0.0F;
@@ -331,7 +331,7 @@ public class ClickGUI extends Screen {
       }
 
       opensans.setAlpha((255.0F - this.titleAnimation.value) / 255.0F);
-      opensans.render(stack, "Naven", (double)(windowX + 50.0F - opensans.getWidth("Naven", 0.75) / 2.0F), (double)(windowY + 5.0F), Color.WHITE, true, 0.75);
+      opensans.render(stack, "Client", (double)(windowX + 50.0F - opensans.getWidth("Client", 0.75) / 2.0F), (double)(windowY + 5.0F), Color.WHITE, true, 0.75);
       opensans.setAlpha(1.0F);
       if (this.selectedCategory != null) {
          this.titleAnimation.target = 255.0F;

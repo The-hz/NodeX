@@ -1,6 +1,6 @@
 package com.client.obsoverlay.files.impl;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.exceptions.NoSuchModuleException;
 import com.client.obsoverlay.files.ClientFile;
 import com.client.obsoverlay.modules.Module;
@@ -21,7 +21,7 @@ public class ModuleFile extends ClientFile {
 
    @Override
    public void read(BufferedReader reader) throws IOException {
-      ModuleManager moduleManager = Naven.getInstance().getModuleManager();
+      ModuleManager moduleManager = Client.getInstance().getModuleManager();
 
       String line;
       while ((line = reader.readLine()) != null) {
@@ -46,7 +46,7 @@ public class ModuleFile extends ClientFile {
 
    @Override
    public void save(BufferedWriter writer) throws IOException {
-      ModuleManager moduleManager = Naven.getInstance().getModuleManager();
+      ModuleManager moduleManager = Client.getInstance().getModuleManager();
 
       for (Module module : new ArrayList<>(moduleManager.getModules())) {
          writer.write(String.format("%s:%d:%s\n", module.getName(), module.getKey(), module.isEnabled()));

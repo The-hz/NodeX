@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import net.minecraft.client.Timer;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -27,8 +27,8 @@ public class MixinTimer {
       cancellable = true
    )
    private void beginRenderTickHook(long timeMillis, CallbackInfoReturnable<Integer> cir) {
-      if (Naven.TICK_TIMER != 1.0F) {
-         this.tickDelta = (float)(timeMillis - this.lastMs) / this.msPerTick * Naven.TICK_TIMER;
+      if (Client.TICK_TIMER != 1.0F) {
+         this.tickDelta = (float)(timeMillis - this.lastMs) / this.msPerTick * Client.TICK_TIMER;
          this.lastMs = timeMillis;
          this.partialTick = this.partialTick + this.tickDelta;
          int i = (int)this.partialTick;

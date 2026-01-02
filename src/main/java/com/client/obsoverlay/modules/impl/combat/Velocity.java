@@ -1,7 +1,7 @@
 package com.client.obsoverlay.modules.impl.combat;
 
 import com.client.mixin.O.accessors.LocalPlayerAccessor;
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.EventTarget;
 import com.client.obsoverlay.events.api.types.EventType;
 import com.client.obsoverlay.events.impl.EventHandlePacket;
@@ -195,7 +195,7 @@ public class Velocity extends Module {
    @EventTarget
    public void onTick(EventRunTicks eventRunTicks) {
       if (mc.player != null && mc.getConnection() != null && mc.gameMode != null && eventRunTicks.getType() != EventType.POST) {
-         if (!Naven.getInstance().getModuleManager().getModule(LongJump.class).isEnabled()) {
+         if (!Client.getInstance().getModuleManager().getModule(LongJump.class).isEnabled()) {
             if (mc.player.isDeadOrDying()
                || !mc.player.isAlive()
                || mc.player.getHealth() <= 0.0F
@@ -248,17 +248,17 @@ public class Velocity extends Module {
                this.processPackets();
                mc.player.connection.send(new Rot(yaw, pitch, mc.player.onGround()));
                mc.gameMode.useItemOn(mc.player, InteractionHand.MAIN_HAND, this.result);
-               Naven.skipTasks.add(() -> {
+               Client.skipTasks.add(() -> {
                });
 
                for (int i = 2; i <= 100; i++) {
-                  Naven.skipTasks
+                  Client.skipTasks
                      .add(
                         () -> {
                            EventMotion event1 = new EventMotion(
                               EventType.PRE, mc.player.position().x, mc.player.position().y, mc.player.position().z, yaw, pitch, mc.player.onGround()
                            );
-                           Naven.getInstance().getRotationManager().onPre(event1);
+                           Client.getInstance().getRotationManager().onPre(event1);
                            if (event1.getYaw() != yaw || event1.getPitch() != pitch) {
                               mc.player.connection.send(new Rot(event1.getYaw(), event1.getPitch(), mc.player.onGround()));
                            }
@@ -277,7 +277,7 @@ public class Velocity extends Module {
    @EventTarget
    public void onPacket(EventHandlePacket e) {
       if (mc.player != null && mc.getConnection() != null && mc.gameMode != null && !mc.player.isUsingItem()) {
-         if (!Naven.getInstance().getModuleManager().getModule(LongJump.class).isEnabled()) {
+         if (!Client.getInstance().getModuleManager().getModule(LongJump.class).isEnabled()) {
             if (mc.player.tickCount < 20) {
                this.reset();
             } else if (!mc.player.isDeadOrDying()
@@ -295,7 +295,7 @@ public class Velocity extends Module {
                         && this.result != null
                         && this.result.getBlockPos().equals(cbu.getPos())) {
                         this.processPackets();
-                        Naven.skipTasks.clear();
+                        Client.skipTasks.clear();
                         debugTick = 0;
                         this.result = null;
                         return;

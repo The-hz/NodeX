@@ -1,6 +1,6 @@
 package com.client.obsoverlay.values;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.exceptions.BadValueTypeException;
 import com.client.obsoverlay.values.impl.BooleanValue;
 import com.client.obsoverlay.values.impl.FloatValue;
@@ -17,7 +17,7 @@ public abstract class Value {
       this.key = key;
       this.name = name;
       this.visibility = visibility;
-      Naven.getInstance().getValueManager().addValue(this);
+      Client.getInstance().getValueManager().addValue(this);
    }
 
    public abstract ValueType getValueType();

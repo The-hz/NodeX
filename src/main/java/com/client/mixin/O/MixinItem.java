@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.impl.EventUseItemRayTrace;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -19,7 +19,7 @@ public class MixinItem {
    )
    private static float hookRayTraceYRot(Player instance) {
       EventUseItemRayTrace event = new EventUseItemRayTrace(instance.getYRot(), instance.getXRot());
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       return event.getYaw();
    }
 
@@ -32,7 +32,7 @@ public class MixinItem {
    )
    private static float hookRayTraceXRot(Player instance) {
       EventUseItemRayTrace event = new EventUseItemRayTrace(instance.getYRot(), instance.getXRot());
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       return event.getPitch();
    }
 }

@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.types.EventType;
 import com.client.obsoverlay.events.impl.EventRenderTabOverlay;
 import java.util.List;
@@ -31,7 +31,7 @@ public abstract class MixinPlayerTabOverlay {
    public List<FormattedCharSequence> hookHeader(Font instance, FormattedText pText, int pMaxWidth) {
       Component component = (Component)pText;
       EventRenderTabOverlay event = new EventRenderTabOverlay(EventType.HEADER, component);
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       return instance.split(event.getComponent(), pMaxWidth);
    }
 
@@ -46,7 +46,7 @@ public abstract class MixinPlayerTabOverlay {
    public List<FormattedCharSequence> hookFooter(Font instance, FormattedText pText, int pMaxWidth) {
       Component component = (Component)pText;
       EventRenderTabOverlay event = new EventRenderTabOverlay(EventType.FOOTER, component);
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       return instance.split(event.getComponent(), pMaxWidth);
    }
 
@@ -60,7 +60,7 @@ public abstract class MixinPlayerTabOverlay {
    public Component hookName(PlayerTabOverlay instance, PlayerInfo pPlayerInfo) {
       Component nameForDisplay = this.getNameForDisplay(pPlayerInfo);
       EventRenderTabOverlay event = new EventRenderTabOverlay(EventType.NAME, nameForDisplay);
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       return event.getComponent();
    }
 }

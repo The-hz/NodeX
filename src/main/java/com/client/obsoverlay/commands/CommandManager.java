@@ -1,6 +1,6 @@
 package com.client.obsoverlay.commands;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.commands.impl.CommandBind;
 import com.client.obsoverlay.commands.impl.CommandConfig;
 import com.client.obsoverlay.commands.impl.CommandLanguage;
@@ -23,7 +23,7 @@ public class CommandManager {
          throw new RuntimeException(var2);
       }
 
-      Naven.getInstance().getEventManager().register(this);
+      Client.getInstance().getEventManager().register(this);
    }
 
    private void initCommands() {

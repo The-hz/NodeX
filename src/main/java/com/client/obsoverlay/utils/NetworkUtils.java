@@ -1,6 +1,6 @@
 package com.client.obsoverlay.utils;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.EventTarget;
 import com.client.obsoverlay.events.api.types.EventType;
 import com.client.obsoverlay.events.impl.EventGlobalPacket;
@@ -37,7 +37,7 @@ public class NetworkUtils {
    public void onMotion(EventMotion e) {
       if (e.getType() == EventType.PRE) {
          if (isServerLag()) {
-            Naven.getInstance().getNotificationManager().addNotification(lagging);
+            Client.getInstance().getNotificationManager().addNotification(lagging);
             lagging.setCreateTime(System.currentTimeMillis());
             lagging.setLevel(NotificationLevel.WARNING);
             totalTime = Math.round(timer.getLastDelay());
@@ -83,7 +83,7 @@ public class NetworkUtils {
       if (!e.isCancelled()) {
          Packet<?> packet = e.getPacket();
          EventPacket event = new EventPacket(e.getType(), packet);
-         Naven.getInstance().getEventManager().call(event);
+         Client.getInstance().getEventManager().call(event);
          if (event.isCancelled()) {
             e.setCancelled(true);
          }

@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.impl.EventServerSetPosition;
 import com.client.obsoverlay.utils.HttpUtils;
 import java.io.IOException;
@@ -27,7 +27,7 @@ public class MixinClientPacketListener {
    )
    public void onSendPacket(Connection instance, Packet<?> pPacket) {
       EventServerSetPosition event = new EventServerSetPosition(pPacket);
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       instance.send(event.getPacket());
    }
 

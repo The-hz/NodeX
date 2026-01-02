@@ -1,6 +1,6 @@
 package com.client.obsoverlay.modules.impl.render;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.EventTarget;
 import com.client.obsoverlay.events.api.types.EventType;
 import com.client.obsoverlay.events.impl.EventMotion;
@@ -183,11 +183,11 @@ public class NameTags extends Module {
             Notification notification = new Notification(
                NotificationLevel.ERROR, "Removed " + this.aimingPlayer.getName().getString() + " from friends!", 3000L
             );
-            Naven.getInstance().getNotificationManager().addNotification(notification);
+            Client.getInstance().getNotificationManager().addNotification(notification);
             FriendManager.removeFriend(this.aimingPlayer);
          } else {
             Notification notification = new Notification(NotificationLevel.SUCCESS, "Added " + this.aimingPlayer.getName().getString() + " as friends!", 3000L);
-            Naven.getInstance().getNotificationManager().addNotification(notification);
+            Client.getInstance().getNotificationManager().addNotification(notification);
             FriendManager.addFriend(this.aimingPlayer);
          }
       }

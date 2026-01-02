@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.impl.EventFallFlying;
 import com.client.obsoverlay.events.impl.EventJump;
 import com.client.obsoverlay.events.impl.EventRotationAnimation;
@@ -36,7 +36,7 @@ public abstract class MixinLivingEntity extends Entity {
    )
    private float modifyJumpYaw(LivingEntity entity) {
       EventJump event = new EventJump(entity.getYRot());
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       return event.getYaw();
    }
 
@@ -49,7 +49,7 @@ public abstract class MixinLivingEntity extends Entity {
    )
    private float hookModifyFallFlyingPitch(LivingEntity instance) {
       EventFallFlying event = new EventFallFlying(instance.getXRot());
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       return event.getPitch();
    }
 
@@ -61,13 +61,13 @@ public abstract class MixinLivingEntity extends Entity {
    private void hasEffect(MobEffect pEffect, CallbackInfoReturnable<Boolean> cir) {
       LivingEntity thisEntity = (LivingEntity)(Object)this;
       if (thisEntity == Minecraft.getInstance().player) {
-         FullBright fullBright = (FullBright)Naven.getInstance().getModuleManager().getModule(FullBright.class);
+         FullBright fullBright = (FullBright) Client.getInstance().getModuleManager().getModule(FullBright.class);
          if (pEffect == MobEffects.NIGHT_VISION && fullBright.isEnabled()) {
             cir.setReturnValue(true);
             cir.cancel();
          }
 
-         AntiNausea antiNausea = (AntiNausea)Naven.getInstance().getModuleManager().getModule(AntiNausea.class);
+         AntiNausea antiNausea = (AntiNausea) Client.getInstance().getModuleManager().getModule(AntiNausea.class);
          if (pEffect == MobEffects.CONFUSION && antiNausea.isEnabled()) {
             cir.setReturnValue(false);
             cir.cancel();
@@ -85,7 +85,7 @@ public abstract class MixinLivingEntity extends Entity {
    private float modifyHeadYaw(LivingEntity entity) {
       if (entity == Minecraft.getInstance().player) {
          EventRotationAnimation event = new EventRotationAnimation(entity.getYRot(), 0.0F, 0.0F, 0.0F);
-         Naven.getInstance().getEventManager().call(event);
+         Client.getInstance().getEventManager().call(event);
          return event.getYaw();
       } else {
          return entity.getYRot();

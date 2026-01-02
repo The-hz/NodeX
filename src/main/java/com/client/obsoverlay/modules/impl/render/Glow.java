@@ -1,6 +1,6 @@
 package com.client.obsoverlay.modules.impl.render;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.modules.Category;
 import com.client.obsoverlay.modules.Module;
 import com.client.obsoverlay.modules.ModuleInfo;
@@ -26,7 +26,7 @@ public class Glow extends Module {
    BooleanValue arrows = ValueBuilder.create(this, "Arrows").setDefaultBooleanValue(false).build().getBooleanValue();
 
    public static boolean shouldGlow(Entity entity) {
-      Glow module = (Glow)Naven.getInstance().getModuleManager().getModule(Glow.class);
+      Glow module = (Glow) Client.getInstance().getModuleManager().getModule(Glow.class);
       if (!module.isEnabled()) {
          return false;
       } else if (entity instanceof Player && module.players.getCurrentValue()) {

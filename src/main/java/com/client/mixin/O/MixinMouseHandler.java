@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.impl.EventMouseClick;
 import net.minecraft.client.MouseHandler;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,6 +19,6 @@ public class MixinMouseHandler {
    )
    private void onPress(long window, int button, int action, int mods, CallbackInfo ci) {
       EventMouseClick event = new EventMouseClick(button, action == 0);
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
    }
 }

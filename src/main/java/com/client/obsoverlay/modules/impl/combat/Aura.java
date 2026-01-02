@@ -1,6 +1,6 @@
 package com.client.obsoverlay.modules.impl.combat;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.EventTarget;
 import com.client.obsoverlay.events.api.types.EventType;
 import com.client.obsoverlay.events.impl.EventAttackSlowdown;
@@ -248,7 +248,7 @@ public class Aura extends Module {
    public void onMotion(EventRunTicks event) {
       if (event.getType() == EventType.PRE && mc.player != null) {
          if (mc.screen instanceof AbstractContainerScreen
-            || Naven.getInstance().getModuleManager().getModule(Stuck.class).isEnabled()
+            || Client.getInstance().getModuleManager().getModule(Stuck.class).isEnabled()
             || InventoryUtils.shouldDisableFeatures()) {
             target = null;
             aimingTarget = null;
@@ -314,9 +314,9 @@ public class Aura extends Module {
    public void onClick(EventClick e) {
       if (mc.player.getUseItem().isEmpty()
          && mc.screen == null
-         && Naven.skipTasks.isEmpty()
+         && Client.skipTasks.isEmpty()
          && !NetworkUtils.isServerLag()
-         && !Naven.getInstance().getModuleManager().getModule(Blink.class).isEnabled()) {
+         && !Client.getInstance().getModuleManager().getModule(Blink.class).isEnabled()) {
          while (this.attacks >= 1.0F) {
             this.doAttack();
             this.attacks--;
@@ -376,7 +376,7 @@ public class Aura extends Module {
          if (living instanceof BlinkingPlayer) {
             return false;
          } else {
-            AntiBots module = (AntiBots)Naven.getInstance().getModuleManager().getModule(AntiBots.class);
+            AntiBots module = (AntiBots) Client.getInstance().getModuleManager().getModule(AntiBots.class);
             if (module == null || !module.isEnabled() || !AntiBots.isBot(entity) && !AntiBots.isBedWarsBot(entity)) {
                if (Teams.isSameTeam(living)) {
                   return false;

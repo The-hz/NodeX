@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.impl.EventRender;
 import com.client.obsoverlay.events.impl.EventRender2D;
 import com.client.obsoverlay.events.impl.EventRenderAfterWorld;
@@ -40,7 +40,7 @@ public class MixinGameRenderer {
       )}
    )
    private void renderLevel(float pPartialTicks, long pFinishTimeNano, PoseStack pMatrixStack, CallbackInfo ci) {
-      Naven.getInstance().getEventManager().call(new EventRender(pPartialTicks, pMatrixStack));
+      Client.getInstance().getEventManager().call(new EventRender(pPartialTicks, pMatrixStack));
    }
 
    @Inject(
@@ -48,7 +48,7 @@ public class MixinGameRenderer {
       at = {@At("TAIL")}
    )
    private void onRenderWorldTail(CallbackInfo info) {
-      Naven.getInstance().getEventManager().call(new EventRenderAfterWorld());
+      Client.getInstance().getEventManager().call(new EventRenderAfterWorld());
    }
 
    @Inject(
@@ -57,7 +57,7 @@ public class MixinGameRenderer {
       cancellable = true
    )
    private static void getNightVisionScale(LivingEntity pLivingEntity, float pNanoTime, CallbackInfoReturnable<Float> cir) {
-      FullBright module = (FullBright)Naven.getInstance().getModuleManager().getModule(FullBright.class);
+      FullBright module = (FullBright) Client.getInstance().getModuleManager().getModule(FullBright.class);
       if (module.isEnabled()) {
          cir.setReturnValue(module.brightness.getCurrentValue());
          cir.cancel();
@@ -85,7 +85,7 @@ public class MixinGameRenderer {
    public void injectRender2DEvent(float p_109094_, long p_109095_, boolean p_109096_, CallbackInfo ci) {
       GuiGraphics e = new GuiGraphics(this.minecraft, this.renderBuffers.bufferSource());
       EventRender2D event = new EventRender2D(e.pose(), e);
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
    }
 
    @Inject(
@@ -94,7 +94,7 @@ public class MixinGameRenderer {
       cancellable = true
    )
    private void bobHurt(PoseStack pMatrixStack, float pPartialTicks, CallbackInfo ci) {
-      NoHurtCam module = (NoHurtCam)Naven.getInstance().getModuleManager().getModule(NoHurtCam.class);
+      NoHurtCam module = (NoHurtCam) Client.getInstance().getModuleManager().getModule(NoHurtCam.class);
       if (module.isEnabled()) {
          ci.cancel();
       }

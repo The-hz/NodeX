@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.types.EventType;
 import com.client.obsoverlay.events.impl.EventMotion;
 import com.client.obsoverlay.events.impl.EventSlowdown;
@@ -77,7 +77,7 @@ public abstract class MixinLocalPlayer extends AbstractClientPlayer {
       )}
    )
    public void injectUpdateEvent(CallbackInfo ci) {
-      Naven.getInstance().getEventManager().call(new EventUpdate());
+      Client.getInstance().getEventManager().call(new EventUpdate());
    }
 
    /**
@@ -87,9 +87,9 @@ public abstract class MixinLocalPlayer extends AbstractClientPlayer {
    @Overwrite
    private void sendPosition() {
       EventMotion eventPre = new EventMotion(EventType.PRE, this.getX(), this.getY(), this.getZ(), this.getYRot(), this.getXRot(), this.onGround());
-      Naven.getInstance().getEventManager().call(eventPre);
+      Client.getInstance().getEventManager().call(eventPre);
       if (eventPre.isCancelled()) {
-         Naven.getInstance().getEventManager().call(new EventMotion(EventType.POST, eventPre.getYaw(), eventPre.getPitch()));
+         Client.getInstance().getEventManager().call(new EventMotion(EventType.POST, eventPre.getYaw(), eventPre.getPitch()));
       } else {
          this.sendIsSprintingIfNeeded();
          boolean flag3 = this.isShiftKeyDown();
@@ -139,7 +139,7 @@ public abstract class MixinLocalPlayer extends AbstractClientPlayer {
             this.autoJumpEnabled = (Boolean)this.minecraft.options.autoJump().get();
          }
 
-         Naven.getInstance().getEventManager().call(new EventMotion(EventType.POST, eventPre.getYaw(), eventPre.getPitch()));
+         Client.getInstance().getEventManager().call(new EventMotion(EventType.POST, eventPre.getYaw(), eventPre.getPitch()));
       }
    }
 
@@ -153,7 +153,7 @@ public abstract class MixinLocalPlayer extends AbstractClientPlayer {
    )
    public boolean onSlowdown(LocalPlayer localPlayer) {
       EventSlowdown event = new EventSlowdown(localPlayer.isUsingItem());
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       return event.isSlowdown();
    }
 }

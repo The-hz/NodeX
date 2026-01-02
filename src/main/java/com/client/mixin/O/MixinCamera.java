@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.modules.impl.render.ViewClip;
 import net.minecraft.client.Camera;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,8 +16,8 @@ public class MixinCamera {
       cancellable = true
    )
    private void getMaxZoom(double pStartingDistance, CallbackInfoReturnable<Double> cir) {
-      if (Naven.getInstance() != null && Naven.getInstance().getModuleManager() != null) {
-         ViewClip module = (ViewClip)Naven.getInstance().getModuleManager().getModule(ViewClip.class);
+      if (Client.getInstance() != null && Client.getInstance().getModuleManager() != null) {
+         ViewClip module = (ViewClip) Client.getInstance().getModuleManager().getModule(ViewClip.class);
          if (module.isEnabled()) {
             cir.setReturnValue(pStartingDistance * (double)module.scale.getCurrentValue() * (double)module.personViewAnimation.value / 100.0);
             cir.cancel();

@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.impl.EventAttackSlowdown;
 import com.client.obsoverlay.events.impl.EventAttackYaw;
 import com.client.obsoverlay.events.impl.EventStayingOnGroundSurface;
@@ -30,7 +30,7 @@ public abstract class MixinPlayer extends LivingEntity {
    )
    private float hookFixRotation(Player instance) {
       EventAttackYaw event = new EventAttackYaw(instance.getYRot());
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       return event.getYaw();
    }
 
@@ -43,7 +43,7 @@ public abstract class MixinPlayer extends LivingEntity {
    )
    private void hookSetDeltaMovement(Player instance, Vec3 vec3) {
       EventAttackSlowdown event = new EventAttackSlowdown();
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       if (!event.isCancelled()) {
          instance.setDeltaMovement(vec3);
       }
@@ -58,7 +58,7 @@ public abstract class MixinPlayer extends LivingEntity {
    )
    private void hookSetSprinting(Player instance, boolean sprinting) {
       EventAttackSlowdown event = new EventAttackSlowdown();
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       if (!event.isCancelled()) {
          instance.setSprinting(sprinting);
       }
@@ -71,7 +71,7 @@ public abstract class MixinPlayer extends LivingEntity {
    )
    private void isStayingOnGroundSurface(CallbackInfoReturnable<Boolean> info) {
       EventStayingOnGroundSurface event = new EventStayingOnGroundSurface((Boolean)info.getReturnValue());
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       info.setReturnValue(event.isStay());
    }
 }

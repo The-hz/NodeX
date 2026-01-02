@@ -1,6 +1,6 @@
 package com.client.obsoverlay.modules.impl.misc;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.modules.Category;
 import com.client.obsoverlay.modules.Module;
 import com.client.obsoverlay.modules.ModuleInfo;
@@ -25,7 +25,7 @@ public class Teams extends Module {
    }
 
    public static boolean isSameTeam(Entity player) {
-      if (!Naven.getInstance().getModuleManager().getModule(Teams.class).isEnabled()) {
+      if (!Client.getInstance().getModuleManager().getModule(Teams.class).isEnabled()) {
          return false;
       } else if (player instanceof Player) {
          if (instance.mode.isCurrentMode("Color")) {

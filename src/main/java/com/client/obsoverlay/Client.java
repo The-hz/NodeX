@@ -28,10 +28,10 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import net.minecraftforge.common.MinecraftForge;
 
-public class Naven {
-   public static final String CLIENT_NAME = "Naven-Modern";
-   public static final String CLIENT_DISPLAY_NAME = "Naven";
-   private static Naven instance;
+public class Client {
+   public static final String CLIENT_NAME = "Client-Modern";
+   public static final String CLIENT_DISPLAY_NAME = "Client";
+   private static Client instance;
    private final EventManager eventManager;
    private final EventWrapper eventWrapper;
    private final ValueManager valueManager;
@@ -44,8 +44,8 @@ public class Naven {
    public static float TICK_TIMER = 1.0F;
    public static Queue<Runnable> skipTasks = new ConcurrentLinkedQueue<>();
 
-   private Naven() {
-      System.out.println("Naven Init");
+   private Client() {
+      System.out.println("Client Init");
       instance = this;
       this.eventManager = new EventManager();
       Shaders.init();
@@ -80,7 +80,7 @@ public class Naven {
 
    public static void modRegister() {
       try {
-         new Naven();
+         new Client();
       } catch (Exception var1) {
          System.err.println("Failed to load client");
          var1.printStackTrace(System.err);
@@ -100,7 +100,7 @@ public class Naven {
       }
    }
 
-   public static Naven getInstance() {
+   public static Client getInstance() {
       return instance;
    }
 

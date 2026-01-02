@@ -1,6 +1,6 @@
 package com.client.obsoverlay.files.impl;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.files.ClientFile;
 import com.client.obsoverlay.values.HasValue;
 import com.client.obsoverlay.values.HasValueManager;
@@ -23,8 +23,8 @@ public class ValueFile extends ClientFile {
 
    @Override
    public void read(BufferedReader reader) throws IOException {
-      ValueManager valueManager = Naven.getInstance().getValueManager();
-      HasValueManager hasValueManager = Naven.getInstance().getHasValueManager();
+      ValueManager valueManager = Client.getInstance().getValueManager();
+      HasValueManager hasValueManager = Client.getInstance().getHasValueManager();
 
       String line;
       while ((line = reader.readLine()) != null) {
@@ -70,7 +70,7 @@ public class ValueFile extends ClientFile {
 
    @Override
    public void save(BufferedWriter writer) throws IOException {
-      ValueManager valueManager = Naven.getInstance().getValueManager();
+      ValueManager valueManager = Client.getInstance().getValueManager();
 
       for (Value value : valueManager.getValues()) {
          try {

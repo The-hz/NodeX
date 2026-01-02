@@ -1,6 +1,6 @@
 package com.client.obsoverlay.modules;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.modules.impl.render.ClickGUIModule;
 import com.client.obsoverlay.modules.impl.render.HUD;
 import com.client.obsoverlay.ui.notification.Notification;
@@ -65,7 +65,7 @@ public class Module extends HasValue {
          this.category = moduleInfo.category();
          super.setName(this.name);
          this.setPrettyName();
-         Naven.getInstance().getHasValueManager().registerHasValue(this);
+         Client.getInstance().getHasValueManager().registerHasValue(this);
       }
    }
 
@@ -77,32 +77,32 @@ public class Module extends HasValue {
 
    public void setEnabled(boolean enabled) {
       try {
-         Naven naven = Naven.getInstance();
+         Client client = Client.getInstance();
          if (enabled) {
             this.enabled = true;
-            naven.getEventManager().register(this);
+            client.getEventManager().register(this);
             this.onEnable();
             if (!(this instanceof ClickGUIModule)) {
-               HUD module = (HUD)Naven.getInstance().getModuleManager().getModule(HUD.class);
+               HUD module = (HUD) Client.getInstance().getModuleManager().getModule(HUD.class);
                if (module.moduleToggleSound.getCurrentValue()) {
                   mc.player.playSound(SoundEvents.WOODEN_BUTTON_CLICK_ON, 0.5F, 1.3F);
                }
 
                Notification notification = new Notification(NotificationLevel.SUCCESS, this.name + " Enabled!", 3000L);
-               naven.getNotificationManager().addNotification(notification);
+               client.getNotificationManager().addNotification(notification);
             }
          } else {
             this.enabled = false;
-            naven.getEventManager().unregister(this);
+            client.getEventManager().unregister(this);
             this.onDisable();
             if (!(this instanceof ClickGUIModule)) {
-               HUD module = (HUD)Naven.getInstance().getModuleManager().getModule(HUD.class);
+               HUD module = (HUD) Client.getInstance().getModuleManager().getModule(HUD.class);
                if (module.moduleToggleSound.getCurrentValue()) {
                   mc.player.playSound(SoundEvents.WOODEN_BUTTON_CLICK_OFF, 0.5F, 0.8F);
                }
 
                Notification notification = new Notification(NotificationLevel.ERROR, this.name + " Disabled!", 3000L);
-               naven.getNotificationManager().addNotification(notification);
+               client.getNotificationManager().addNotification(notification);
             }
          }
       } catch (Exception var5) {

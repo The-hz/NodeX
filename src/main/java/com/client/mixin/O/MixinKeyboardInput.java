@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.impl.EventMoveInput;
 import net.minecraft.client.player.Input;
 import net.minecraft.client.player.KeyboardInput;
@@ -19,7 +19,7 @@ public class MixinKeyboardInput extends Input {
       this.forwardImpulse = this.up == this.down ? 0.0F : (this.up ? 1.0F : -1.0F);
       this.leftImpulse = this.left == this.right ? 0.0F : (this.left ? 1.0F : -1.0F);
       EventMoveInput eventMoveInput = new EventMoveInput(this.forwardImpulse, this.leftImpulse, this.jumping, this.shiftKeyDown, 0.3);
-      Naven.getInstance().getEventManager().call(eventMoveInput);
+      Client.getInstance().getEventManager().call(eventMoveInput);
       double sneakMultiplier = eventMoveInput.getSneakSlowDownMultiplier();
       this.forwardImpulse = eventMoveInput.getForward();
       this.leftImpulse = eventMoveInput.getStrafe();

@@ -1,6 +1,6 @@
 package com.client.obsoverlay.modules.impl.misc;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.EventTarget;
 import com.client.obsoverlay.events.api.types.EventType;
 import com.client.obsoverlay.events.impl.EventMotion;
@@ -23,7 +23,7 @@ import net.minecraft.world.entity.projectile.Fireball;
 public class AntiFireball extends Module {
    @EventTarget
    public void onMotion(EventMotion e) {
-      if (!Naven.getInstance().getModuleManager().getModule(LongJump.class).isEnabled()) {
+      if (!Client.getInstance().getModuleManager().getModule(LongJump.class).isEnabled()) {
          if (e.getType() == EventType.PRE) {
             Stream<Entity> stream = StreamSupport.stream(mc.level.entitiesForRendering().spliterator(), true);
             Optional<Fireball> fireball = stream.filter(entityx -> entityx instanceof Fireball && mc.player.distanceTo(entityx) < 6.0F)

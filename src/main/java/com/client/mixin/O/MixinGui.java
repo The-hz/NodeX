@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.types.EventType;
 import com.client.obsoverlay.events.impl.EventRenderScoreboard;
 import com.client.obsoverlay.events.impl.EventSetTitle;
@@ -48,7 +48,7 @@ public class MixinGui {
    )
    public void hookScoreboardHead(GuiGraphics pPoseStack, Objective pObjective, CallbackInfo ci) {
       pPoseStack.pose().pushPose();
-      Scoreboard module = (Scoreboard)Naven.getInstance().getModuleManager().getModule(Scoreboard.class);
+      Scoreboard module = (Scoreboard) Client.getInstance().getModuleManager().getModule(Scoreboard.class);
       if (module.isEnabled()) {
          pPoseStack.pose().translate(0.0F, module.down.getCurrentValue(), 0.0F);
       }
@@ -70,7 +70,7 @@ public class MixinGui {
       )
    )
    public int hookRenderScore(GuiGraphics instance, Font p_283343_, String p_281896_, int p_283569_, int p_283418_, int p_281560_, boolean p_282130_) {
-      Scoreboard module = (Scoreboard)Naven.getInstance().getModuleManager().getModule(Scoreboard.class);
+      Scoreboard module = (Scoreboard) Client.getInstance().getModuleManager().getModule(Scoreboard.class);
       return module.isEnabled() && module.hideScore.getCurrentValue() ? 0 : instance.drawString(p_283343_, p_281896_, p_283569_, p_283418_, p_281560_);
    }
 
@@ -84,7 +84,7 @@ public class MixinGui {
    public MutableComponent hookScoreboardName(Team pPlayerTeam, Component pPlayerName) {
       MutableComponent mutableComponent = PlayerTeam.formatNameForTeam(pPlayerTeam, pPlayerName);
       EventRenderScoreboard event = new EventRenderScoreboard(mutableComponent);
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       return (MutableComponent)event.getComponent();
    }
 
@@ -98,7 +98,7 @@ public class MixinGui {
    public Component hookScoreboardTitle(Objective instance) {
       Component component = instance.getDisplayName();
       EventRenderScoreboard event = new EventRenderScoreboard(component);
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       return event.getComponent();
    }
 
@@ -109,7 +109,7 @@ public class MixinGui {
    )
    public void hookTitle(Component pTitle, CallbackInfo ci) {
       EventSetTitle event = new EventSetTitle(EventType.TITLE, pTitle);
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       if (!event.isCancelled()) {
          this.title = event.getTitle();
          this.titleTime = this.titleFadeInTime + this.titleStayTime + this.titleFadeOutTime;
@@ -124,7 +124,7 @@ public class MixinGui {
    )
    public void hookSubtitle(Component pSubtitle, CallbackInfo ci) {
       EventSetTitle event = new EventSetTitle(EventType.SUBTITLE, pSubtitle);
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       if (!event.isCancelled()) {
          this.subtitle = event.getTitle();
          ci.cancel();
@@ -137,7 +137,7 @@ public class MixinGui {
       cancellable = true
    )
    public void hookRenderEffects(GuiGraphics pPoseStack, CallbackInfo ci) {
-      NoRender noRender = (NoRender)Naven.getInstance().getModuleManager().getModule(NoRender.class);
+      NoRender noRender = (NoRender) Client.getInstance().getModuleManager().getModule(NoRender.class);
       if (noRender.isEnabled() && noRender.disableEffects.getCurrentValue()) {
          ci.cancel();
       }

@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.world.entity.Entity;
@@ -18,8 +18,8 @@ public class MixinClientLevel {
       )
    )
    public void hookSkipTicks(Entity instance) {
-      if (!Naven.skipTasks.isEmpty() && instance == Minecraft.getInstance().player) {
-         Runnable task = Naven.skipTasks.poll();
+      if (!Client.skipTasks.isEmpty() && instance == Minecraft.getInstance().player) {
+         Runnable task = Client.skipTasks.poll();
          if (task != null) {
             task.run();
          }

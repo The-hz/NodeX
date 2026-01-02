@@ -1,6 +1,6 @@
 package com.client.obsoverlay.commands.impl;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.commands.Command;
 import com.client.obsoverlay.commands.CommandInfo;
 import com.client.obsoverlay.events.api.EventTarget;
@@ -23,10 +23,10 @@ public class CommandBind extends Command {
          final String moduleName = args[0];
 
          try {
-            final Module module = Naven.getInstance().getModuleManager().getModule(moduleName);
+            final Module module = Client.getInstance().getModuleManager().getModule(moduleName);
             if (module != null) {
                ChatUtils.addChatMessage("Press a key to bind " + moduleName + " to.");
-               Naven.getInstance().getEventManager().register(new Object() {
+               Client.getInstance().getEventManager().register(new Object() {
                   @EventTarget
                   public void onKey(EventKey e) {
                      if (e.isState()) {
@@ -34,8 +34,8 @@ public class CommandBind extends Command {
                         Key key = InputConstants.getKey(e.getKey(), 0);
                         String keyName = key.getDisplayName().getString().toUpperCase();
                         ChatUtils.addChatMessage("Bound " + moduleName + " to " + keyName + ".");
-                        Naven.getInstance().getEventManager().unregister(this);
-                        Naven.getInstance().getFileManager().save();
+                        Client.getInstance().getEventManager().unregister(this);
+                        Client.getInstance().getFileManager().save();
                      }
                   }
                });
@@ -50,18 +50,18 @@ public class CommandBind extends Command {
          String keyName = args[1];
 
          try {
-            Module module = Naven.getInstance().getModuleManager().getModule(moduleName);
+            Module module = Client.getInstance().getModuleManager().getModule(moduleName);
             if (module != null) {
                if (keyName.equalsIgnoreCase("none")) {
                   module.setKey(InputConstants.UNKNOWN.getValue());
                   ChatUtils.addChatMessage("Unbound " + moduleName + ".");
-                  Naven.getInstance().getFileManager().save();
+                  Client.getInstance().getFileManager().save();
                } else {
                   Key key = InputConstants.getKey("key.keyboard." + keyName.toLowerCase());
                   if (key != InputConstants.UNKNOWN) {
                      module.setKey(key.getValue());
                      ChatUtils.addChatMessage("Bound " + moduleName + " to " + keyName.toUpperCase() + ".");
-                     Naven.getInstance().getFileManager().save();
+                     Client.getInstance().getFileManager().save();
                   } else {
                      ChatUtils.addChatMessage("Invalid key.");
                   }
@@ -79,7 +79,7 @@ public class CommandBind extends Command {
 
    @Override
    public String[] onTab(String[] args) {
-      return Naven.getInstance()
+      return Client.getInstance()
          .getModuleManager()
          .getModules()
          .stream()

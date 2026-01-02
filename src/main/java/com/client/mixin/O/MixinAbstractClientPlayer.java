@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.impl.EventUpdateFoV;
 import net.minecraft.client.player.AbstractClientPlayer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,7 +18,7 @@ public abstract class MixinAbstractClientPlayer {
    private void hookFoV(CallbackInfoReturnable<Float> cir) {
       Float returnValue = (Float)cir.getReturnValue();
       EventUpdateFoV event = new EventUpdateFoV(returnValue);
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       cir.setReturnValue(event.getFov());
    }
 }

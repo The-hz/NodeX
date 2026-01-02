@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.impl.EventUpdateHeldItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
@@ -23,7 +23,7 @@ public class MixinItemInHandLayer {
    private ItemStack hookMainHand(LivingEntity instance) {
       EventUpdateHeldItem event = new EventUpdateHeldItem(InteractionHand.MAIN_HAND, instance.getMainHandItem());
       if (instance == Minecraft.getInstance().player) {
-         Naven.getInstance().getEventManager().call(event);
+         Client.getInstance().getEventManager().call(event);
       }
 
       return event.getItem();
@@ -39,7 +39,7 @@ public class MixinItemInHandLayer {
    private ItemStack hookOffHand(LivingEntity instance) {
       EventUpdateHeldItem event = new EventUpdateHeldItem(InteractionHand.OFF_HAND, instance.getOffhandItem());
       if (instance == Minecraft.getInstance().player) {
-         Naven.getInstance().getEventManager().call(event);
+         Client.getInstance().getEventManager().call(event);
       }
 
       return event.getItem();

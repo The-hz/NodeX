@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.modules.impl.render.AntiBlindness;
 import net.minecraft.client.renderer.FogRenderer;
 import net.minecraft.world.effect.MobEffect;
@@ -21,7 +21,7 @@ public class MixinFogRenderer {
       )
    )
    private static boolean onSetupColor(LivingEntity instance, MobEffect pEffect) {
-      return pEffect == MobEffects.BLINDNESS && Naven.getInstance().getModuleManager().getModule(AntiBlindness.class).isEnabled()
+      return pEffect == MobEffects.BLINDNESS && Client.getInstance().getModuleManager().getModule(AntiBlindness.class).isEnabled()
          ? false
          : instance.hasEffect(pEffect);
    }
@@ -34,7 +34,7 @@ public class MixinFogRenderer {
       )
    )
    private static boolean onSetupFog(LivingEntity instance, MobEffect pEffect) {
-      return pEffect == MobEffects.BLINDNESS && Naven.getInstance().getModuleManager().getModule(AntiBlindness.class).isEnabled()
+      return pEffect == MobEffects.BLINDNESS && Client.getInstance().getModuleManager().getModule(AntiBlindness.class).isEnabled()
          ? false
          : instance.hasEffect(pEffect);
    }

@@ -1,6 +1,6 @@
 package com.client.obsoverlay.modules.impl.render;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.Version;
 import com.client.obsoverlay.events.api.EventTarget;
 import com.client.obsoverlay.events.api.types.EventType;
@@ -125,14 +125,14 @@ public class HUD extends Module {
    @EventTarget
    public void notification(EventRender2D e) {
       if (this.notification.getCurrentValue()) {
-         Naven.getInstance().getNotificationManager().onRender(e);
+         Client.getInstance().getNotificationManager().onRender(e);
       }
    }
 
    @EventTarget
    public void onShader(EventShader e) {
       if (this.notification.getCurrentValue() && e.getType() == EventType.SHADOW) {
-         Naven.getInstance().getNotificationManager().onRenderShadow(e);
+         Client.getInstance().getNotificationManager().onRenderShadow(e);
       }
 
       if (this.waterMark.getCurrentValue()) {
@@ -151,7 +151,7 @@ public class HUD extends Module {
       CustomTextRenderer font = Fonts.opensans;
       if (this.waterMark.getCurrentValue()) {
          e.getStack().pushPose();
-         String text = "Naven | " + Version.getVersion() + " | jiuxian_baka | " + StringUtils.split(mc.fpsString, " ")[0] + " FPS | " + format.format(new Date());
+         String text = "Client | " + Version.getVersion() + " | jiuxian_baka | " + StringUtils.split(mc.fpsString, " ")[0] + " FPS | " + format.format(new Date());
          this.width = font.getWidth(text, (double)this.watermarkSize.getCurrentValue()) + 14.0F;
          this.watermarkHeight = (float)font.getHeight(true, (double)this.watermarkSize.getCurrentValue());
          StencilUtils.write(false);
@@ -167,7 +167,7 @@ public class HUD extends Module {
       this.blurMatrices.clear();
       if (this.arrayList.getCurrentValue()) {
          e.getStack().pushPose();
-         ModuleManager moduleManager = Naven.getInstance().getModuleManager();
+         ModuleManager moduleManager = Client.getInstance().getModuleManager();
          if (update || this.renderModules == null) {
             this.renderModules = new ArrayList<>(moduleManager.getModules());
             if (this.hideRenderModules.getCurrentValue()) {

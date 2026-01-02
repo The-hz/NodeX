@@ -1,6 +1,6 @@
 package com.client.obsoverlay.modules.impl.combat;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.EventTarget;
 import com.client.obsoverlay.events.api.types.EventType;
 import com.client.obsoverlay.events.impl.EventRunTicks;
@@ -114,7 +114,7 @@ public class AimAssist extends Module {
          if (living instanceof BlinkingPlayer) {
             return false;
          } else {
-            AntiBots module = (AntiBots)Naven.getInstance().getModuleManager().getModule(AntiBots.class);
+            AntiBots module = (AntiBots) Client.getInstance().getModuleManager().getModule(AntiBots.class);
             if (module == null || !module.isEnabled() || !AntiBots.isBot(entity) && !AntiBots.isBedWarsBot(entity)) {
                if (Teams.isSameTeam(living)) {
                   return false;

@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.impl.EventRayTrace;
 import com.client.obsoverlay.events.impl.EventStrafe;
 import com.client.obsoverlay.events.impl.EventStuckInBlock;
@@ -42,7 +42,7 @@ public abstract class MixinEntity {
       Entity thisEntity = (Entity)(Object)this;
       if (thisEntity == Minecraft.getInstance().player) {
          EventRayTrace lookEvent = new EventRayTrace(thisEntity, yaw, pitch);
-         Naven.getInstance().getEventManager().call(lookEvent);
+         Client.getInstance().getEventManager().call(lookEvent);
          yaw = lookEvent.yaw;
          pitch = lookEvent.pitch;
       }
@@ -61,7 +61,7 @@ public abstract class MixinEntity {
    )
    private float modifyYaw(float yaw) {
       EventStrafe strafe = new EventStrafe(yaw);
-      Naven.getInstance().getEventManager().call(strafe);
+      Client.getInstance().getEventManager().call(strafe);
       return strafe.getYaw();
    }
 
@@ -73,7 +73,7 @@ public abstract class MixinEntity {
       Entity thisEntity = (Entity)(Object)this;
       if (Minecraft.getInstance().player == thisEntity) {
          EventStuckInBlock event = new EventStuckInBlock(pState, pMotionMultiplier);
-         Naven.getInstance().getEventManager().call(event);
+         Client.getInstance().getEventManager().call(event);
          if (event.isCancelled()) {
             this.stuckSpeedMultiplier = Vec3.ZERO;
             return;

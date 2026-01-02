@@ -1,6 +1,6 @@
 package com.client.obsoverlay.modules.impl.misc;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.EventTarget;
 import com.client.obsoverlay.events.api.types.EventType;
 import com.client.obsoverlay.events.impl.EventMotion;
@@ -236,27 +236,27 @@ public class InventoryCleaner extends Module {
    private boolean inventoryOpen = false;
 
    public static int getMaxBlockSize() {
-      return (int)((InventoryCleaner)Naven.getInstance().getModuleManager().getModule(InventoryCleaner.class)).maxBlockSize.getCurrentValue();
+      return (int)((InventoryCleaner) Client.getInstance().getModuleManager().getModule(InventoryCleaner.class)).maxBlockSize.getCurrentValue();
    }
 
    public static boolean shouldKeepProjectile() {
-      return ((InventoryCleaner)Naven.getInstance().getModuleManager().getModule(InventoryCleaner.class)).keepProjectile.getCurrentValue();
+      return ((InventoryCleaner) Client.getInstance().getModuleManager().getModule(InventoryCleaner.class)).keepProjectile.getCurrentValue();
    }
 
    public static int getMaxProjectileSize() {
-      return (int)((InventoryCleaner)Naven.getInstance().getModuleManager().getModule(InventoryCleaner.class)).maxProjectileSize.getCurrentValue();
+      return (int)((InventoryCleaner) Client.getInstance().getModuleManager().getModule(InventoryCleaner.class)).maxProjectileSize.getCurrentValue();
    }
 
    public static int getMaxArrowSize() {
-      return (int)((InventoryCleaner)Naven.getInstance().getModuleManager().getModule(InventoryCleaner.class)).maxArrowSize.getCurrentValue();
+      return (int)((InventoryCleaner) Client.getInstance().getModuleManager().getModule(InventoryCleaner.class)).maxArrowSize.getCurrentValue();
    }
 
    public static int getWaterBucketCount() {
-      return (int)((InventoryCleaner)Naven.getInstance().getModuleManager().getModule(InventoryCleaner.class)).waterBucketCount.getCurrentValue();
+      return (int)((InventoryCleaner) Client.getInstance().getModuleManager().getModule(InventoryCleaner.class)).waterBucketCount.getCurrentValue();
    }
 
    public static int getLavaBucketCount() {
-      return (int)((InventoryCleaner)Naven.getInstance().getModuleManager().getModule(InventoryCleaner.class)).lavaBucketCount.getCurrentValue();
+      return (int)((InventoryCleaner) Client.getInstance().getModuleManager().getModule(InventoryCleaner.class)).lavaBucketCount.getCurrentValue();
    }
 
    public boolean isItemUseful(ItemStack stack) {
@@ -378,7 +378,7 @@ public class InventoryCleaner extends Module {
             Notification notification = new Notification(
                NotificationLevel.ERROR, "Duplicate slot config in Inventory Manager! Please check your config!", 8000L
             );
-            Naven.getInstance().getNotificationManager().addNotification(notification);
+            Client.getInstance().getNotificationManager().addNotification(notification);
             this.toggle();
             return;
          }
@@ -394,7 +394,7 @@ public class InventoryCleaner extends Module {
          }
 
          if (ChestStealer.isWorking()
-            || Naven.getInstance().getModuleManager().getModule(Scaffold.class).isEnabled()
+            || Client.getInstance().getModuleManager().getModule(Scaffold.class).isEnabled()
             || (this.inventoryOnly.getCurrentValue() ? !(mc.screen instanceof InventoryScreen) : this.noMoveTicks <= 1)) {
             this.clickOffHand = false;
             return;

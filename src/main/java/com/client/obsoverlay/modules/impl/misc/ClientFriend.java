@@ -1,6 +1,6 @@
 package com.client.obsoverlay.modules.impl.misc;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.modules.Category;
 import com.client.obsoverlay.modules.Module;
 import com.client.obsoverlay.modules.ModuleInfo;
@@ -20,6 +20,6 @@ public class ClientFriend extends Module {
    public void onDisable() {
       attackTimer.reset();
       Notification notification = new Notification(NotificationLevel.INFO, "You can attack other players after 15 seconds.", 15000L);
-      Naven.getInstance().getNotificationManager().addNotification(notification);
+      Client.getInstance().getNotificationManager().addNotification(notification);
    }
 }

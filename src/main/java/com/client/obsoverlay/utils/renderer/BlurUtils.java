@@ -1,6 +1,6 @@
 package com.client.obsoverlay.utils.renderer;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.types.EventType;
 import com.client.obsoverlay.events.impl.EventRender2D;
 import com.client.obsoverlay.events.impl.EventShader;
@@ -41,7 +41,7 @@ public class BlurUtils {
 
    public static void onRenderAfterWorld(EventRender2D e, float fps, int strengthIndex) {
       StencilUtils.write(false);
-      Naven.getInstance().getEventManager().call(new EventShader(e.getStack(), EventType.BLUR));
+      Client.getInstance().getEventManager().call(new EventShader(e.getStack(), EventType.BLUR));
       StencilUtils.erase(true);
       if (shaderDown == null) {
          shaderDown = new Shader("blur.vert", "blur_down.frag");

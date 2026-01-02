@@ -1,7 +1,7 @@
 package com.client.obsoverlay.modules.impl.move;
 
 import com.client.mixin.O.accessors.MultiPlayerGameModeAccessor;
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.EventTarget;
 import com.client.obsoverlay.events.api.types.EventType;
 import com.client.obsoverlay.events.impl.EventClick;
@@ -77,7 +77,7 @@ public class AutoMLG extends Module {
          if (--this.timeout == 0 && this.rotation) {
             this.rotation = false;
             Notification notification = new Notification(NotificationLevel.WARNING, "Failed to place water!", 3000L);
-            Naven.getInstance().getNotificationManager().addNotification(notification);
+            Client.getInstance().getNotificationManager().addNotification(notification);
          }
       }
    }
@@ -91,7 +91,7 @@ public class AutoMLG extends Module {
             this.useItem(mc.player, mc.level, InteractionHand.MAIN_HAND);
          } else {
             Notification notification = new Notification(NotificationLevel.WARNING, "Failed to place water!", 3000L);
-            Naven.getInstance().getNotificationManager().addNotification(notification);
+            Client.getInstance().getNotificationManager().addNotification(notification);
             this.rotation = false;
          }
       } else if (this.above != null) {
@@ -101,7 +101,7 @@ public class AutoMLG extends Module {
             this.useItem(mc.player, mc.level, InteractionHand.MAIN_HAND);
          } else {
             Notification notification = new Notification(NotificationLevel.WARNING, "Failed to recycle the water dues to moving!", 3000L);
-            Naven.getInstance().getNotificationManager().addNotification(notification);
+            Client.getInstance().getNotificationManager().addNotification(notification);
          }
 
          mc.player.getInventory().selected = this.originalSlot;

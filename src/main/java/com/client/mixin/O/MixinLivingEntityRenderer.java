@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.impl.EventRotationAnimation;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
@@ -38,7 +38,7 @@ public class MixinLivingEntityRenderer<T extends LivingEntity, M extends EntityM
    private float rotAnimationYaw(float pDelta, float pStart, float pEnd) {
       EventRotationAnimation event = new EventRotationAnimation(pEnd, pStart, 0.0F, 0.0F);
       if (EventRotationAnimation.currentEntity == Minecraft.getInstance().player) {
-         Naven.getInstance().getEventManager().call(event);
+         Client.getInstance().getEventManager().call(event);
       }
 
       return Mth.rotLerp(pDelta, event.getLastYaw(), event.getYaw());
@@ -55,7 +55,7 @@ public class MixinLivingEntityRenderer<T extends LivingEntity, M extends EntityM
    private float rotAnimationPitch(float pDelta, float pStart, float pEnd) {
       EventRotationAnimation event = new EventRotationAnimation(0.0F, 0.0F, pEnd, pStart);
       if (EventRotationAnimation.currentEntity == Minecraft.getInstance().player) {
-         Naven.getInstance().getEventManager().call(event);
+         Client.getInstance().getEventManager().call(event);
       }
 
       return Mth.lerp(pDelta, event.getLastPitch(), event.getPitch());

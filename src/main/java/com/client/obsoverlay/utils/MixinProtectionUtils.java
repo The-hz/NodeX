@@ -1,6 +1,6 @@
 package com.client.obsoverlay.utils;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.impl.EventHandlePacket;
 import io.netty.handler.codec.DecoderException;
 import net.minecraft.network.FriendlyByteBuf;
@@ -18,7 +18,7 @@ public class MixinProtectionUtils {
                try {
                   EventHandlePacket event = new EventHandlePacket((Packet)packet);
                   if (executor.isSameThread()) {
-                     Naven.getInstance().getEventManager().call(event);
+                     Client.getInstance().getEventManager().call(event);
                      if (event.isCancelled()) {
                         return;
                      }

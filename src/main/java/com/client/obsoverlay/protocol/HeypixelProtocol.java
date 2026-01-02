@@ -22,7 +22,7 @@ import org.msgpack.value.Variable;
 
 public class HeypixelProtocol {
    public static final String CHANNEL_CHECK_NAME = "heypixelmod:s2cevent";
-   public static Logger logger = LogManager.getLogger("Naven");
+   public static Logger logger = LogManager.getLogger("Client");
    public SimpleChannel channel;
    public static HeypixelSession heypixelSession;
    public static HeypixelProtocol INSTANCE = new HeypixelProtocol();

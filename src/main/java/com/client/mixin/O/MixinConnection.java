@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.types.EventType;
 import com.client.obsoverlay.events.impl.EventGlobalPacket;
 import com.client.obsoverlay.utils.HttpUtils;
@@ -67,7 +67,7 @@ public abstract class MixinConnection extends SimpleChannelInboundHandler<Packet
    )
    private void onGenericsFtw(Packet<?> pPacket, PacketListener pListener) {
       EventGlobalPacket event = new EventGlobalPacket(EventType.RECEIVE, pPacket);
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       if (!event.isCancelled()) {
          genericsFtw(event.getPacket(), pListener);
       }
@@ -86,7 +86,7 @@ public abstract class MixinConnection extends SimpleChannelInboundHandler<Packet
          this.sendPacket(pInPacket, pFutureListeners);
       } else {
          EventGlobalPacket event = new EventGlobalPacket(EventType.SEND, pInPacket);
-         Naven.getInstance().getEventManager().call(event);
+         Client.getInstance().getEventManager().call(event);
          if (!event.isCancelled()) {
             this.sendPacket(event.getPacket(), pFutureListeners);
          }

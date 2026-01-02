@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.types.EventType;
 import com.client.obsoverlay.events.impl.EventClick;
 import com.client.obsoverlay.events.impl.EventRunTicks;
@@ -36,7 +36,7 @@ public class MixinMinecraft {
       at = {@At("TAIL")}
    )
    private void onInit(CallbackInfo info) {
-      Naven.modRegister();
+      Client.modRegister();
    }
 
    @Inject(
@@ -65,8 +65,8 @@ public class MixinMinecraft {
       remap = false
    )
    private void shutdown(CallbackInfo ci) {
-      if (Naven.getInstance() != null && Naven.getInstance().getEventManager() != null) {
-         Naven.getInstance().getEventManager().call(new EventShutdown());
+      if (Client.getInstance() != null && Client.getInstance().getEventManager() != null) {
+         Client.getInstance().getEventManager().call(new EventShutdown());
       }
    }
 
@@ -75,8 +75,8 @@ public class MixinMinecraft {
       at = {@At("HEAD")}
    )
    private void tickPre(CallbackInfo ci) {
-      if (Naven.getInstance() != null && Naven.getInstance().getEventManager() != null) {
-         Naven.getInstance().getEventManager().call(new EventRunTicks(EventType.PRE));
+      if (Client.getInstance() != null && Client.getInstance().getEventManager() != null) {
+         Client.getInstance().getEventManager().call(new EventRunTicks(EventType.PRE));
       }
    }
 
@@ -85,8 +85,8 @@ public class MixinMinecraft {
       at = {@At("TAIL")}
    )
    private void tickPost(CallbackInfo ci) {
-      if (Naven.getInstance() != null && Naven.getInstance().getEventManager() != null) {
-         Naven.getInstance().getEventManager().call(new EventRunTicks(EventType.POST));
+      if (Client.getInstance() != null && Client.getInstance().getEventManager() != null) {
+         Client.getInstance().getEventManager().call(new EventRunTicks(EventType.POST));
       }
    }
 
@@ -138,9 +138,9 @@ public class MixinMinecraft {
       cancellable = true
    )
    private void clickEvent(CallbackInfo ci) {
-      if (Naven.getInstance() != null && Naven.getInstance().getEventManager() != null) {
+      if (Client.getInstance() != null && Client.getInstance().getEventManager() != null) {
          EventClick event = new EventClick();
-         Naven.getInstance().getEventManager().call(event);
+         Client.getInstance().getEventManager().call(event);
          if (event.isCancelled()) {
             ci.cancel();
          }

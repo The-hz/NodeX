@@ -1,6 +1,6 @@
 package com.client.obsoverlay.commands.impl;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.commands.Command;
 import com.client.obsoverlay.commands.CommandInfo;
 import com.client.obsoverlay.exceptions.NoSuchModuleException;
@@ -19,7 +19,7 @@ public class CommandToggle extends Command {
          String moduleName = args[0];
 
          try {
-            Module module = Naven.getInstance().getModuleManager().getModule(moduleName);
+            Module module = Client.getInstance().getModuleManager().getModule(moduleName);
             if (module != null) {
                module.toggle();
             } else {
@@ -33,7 +33,7 @@ public class CommandToggle extends Command {
 
    @Override
    public String[] onTab(String[] args) {
-      return Naven.getInstance()
+      return Client.getInstance()
          .getModuleManager()
          .getModules()
          .stream()

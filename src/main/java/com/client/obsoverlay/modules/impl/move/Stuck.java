@@ -1,6 +1,6 @@
 package com.client.obsoverlay.modules.impl.move;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.EventTarget;
 import com.client.obsoverlay.events.api.types.EventType;
 import com.client.obsoverlay.events.impl.EventMotion;
@@ -64,7 +64,7 @@ public class Stuck extends Module {
 
    @EventTarget
    public void onMotion(EventMotion e) {
-      Module scaffold = Naven.getInstance().getModuleManager().getModule(Scaffold.class);
+      Module scaffold = Client.getInstance().getModuleManager().getModule(Scaffold.class);
       if (scaffold.isEnabled()) {
          scaffold.toggle();
       } else {

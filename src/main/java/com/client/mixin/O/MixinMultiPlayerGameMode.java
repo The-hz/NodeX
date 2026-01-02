@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.impl.EventDestroyBlock;
 import com.client.obsoverlay.events.impl.EventPositionItem;
 import net.minecraft.client.multiplayer.ClientPacketListener;
@@ -26,7 +26,7 @@ public class MixinMultiPlayerGameMode {
    )
    public void onSendPacket(ClientPacketListener instance, Packet<?> pPacket) {
       EventPositionItem event = new EventPositionItem(pPacket);
-      Naven.getInstance().getEventManager().call(event);
+      Client.getInstance().getEventManager().call(event);
       if (!event.isCancelled()) {
          instance.send(event.getPacket());
       }
@@ -37,6 +37,6 @@ public class MixinMultiPlayerGameMode {
       at = {@At("HEAD")}
    )
    public void onStartDestroyBlock(BlockPos pLoc, Direction pFace, CallbackInfoReturnable<Boolean> cir) {
-      Naven.getInstance().getEventManager().call(new EventDestroyBlock(pLoc, pFace));
+      Client.getInstance().getEventManager().call(new EventDestroyBlock(pLoc, pFace));
    }
 }

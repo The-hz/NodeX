@@ -1,6 +1,6 @@
 package com.client.obsoverlay.modules.impl.combat;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.EventTarget;
 import com.client.obsoverlay.events.api.types.EventType;
 import com.client.obsoverlay.events.impl.EventMotion;
@@ -48,7 +48,7 @@ public class AntiBots extends Module {
       .getFloatValue();
 
    public static boolean isBedWarsBot(Entity entity) {
-      AntiBots module = (AntiBots)Naven.getInstance().getModuleManager().getModule(AntiBots.class);
+      AntiBots module = (AntiBots) Client.getInstance().getModuleManager().getModule(AntiBots.class);
       if (module.respawnTimeValue.getCurrentValue() < 1.0F) {
          return false;
       } else {

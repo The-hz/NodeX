@@ -1,6 +1,6 @@
 package com.client.obsoverlay.utils.renderer;
 
-import com.client.obsoverlay.Naven;
+import com.client.obsoverlay.Client;
 import com.client.obsoverlay.events.api.types.EventType;
 import com.client.obsoverlay.events.impl.EventRender2D;
 import com.client.obsoverlay.events.impl.EventShader;
@@ -38,7 +38,7 @@ public class ShadowUtils {
          fbo2.resize();
          render.bind();
          RenderSystem.setShader(GameRenderer::getPositionColorShader);
-         Naven.getInstance().getEventManager().call(new EventShader(e.getStack(), EventType.SHADOW));
+         Client.getInstance().getEventManager().call(new EventShader(e.getStack(), EventType.SHADOW));
          render.unbind();
       }
 
