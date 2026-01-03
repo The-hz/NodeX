@@ -20,7 +20,7 @@ modId="client" #mandatory
 # The version number of the mod
 version="1.0" #mandatory
 # A display name for the mod
-displayName="Naven-Modern" #mandatory
+displayName="NodeX" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://docs.minecraftforge.net/en/latest/misc/updatechecker/
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
@@ -32,7 +32,7 @@ displayName="Naven-Modern" #mandatory
 # A text field displayed in the mod UI
 authors="jiuxian_baka" #optional
 # The description text for the mod (multi line!) (#mandatory)
-description='''共享Naven'''
+description='''NULL'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies."client"]] #optional
    # the modid of the dependency

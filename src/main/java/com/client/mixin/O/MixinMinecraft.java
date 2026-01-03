@@ -29,7 +29,7 @@ public class MixinMinecraft {
    @Unique
    private int skipTicks;
    @Unique
-   private long naven_Modern$lastFrame;
+   private long nodex_Modern$lastFrame;
 
    @Inject(
       method = {"<init>"},
@@ -45,12 +45,12 @@ public class MixinMinecraft {
    )
    public void onInit(GameConfig pGameConfig, CallbackInfo ci) {
       System.setProperty("java.awt.headless", "false");
-      ModList.get().getMods().removeIf(modInfox -> modInfox.getModId().contains("naven"));
+      ModList.get().getMods().removeIf(modInfox -> modInfox.getModId().contains("NodeX"));
       List<IModFileInfo> fileInfoToRemove = new ArrayList<>();
 
       for (IModFileInfo fileInfo : ModList.get().getModFiles()) {
          for (IModInfo modInfo : fileInfo.getMods()) {
-            if (modInfo.getModId().contains("naven")) {
+            if (modInfo.getModId().contains("NodeX")) {
                fileInfoToRemove.add(fileInfo);
             }
          }
@@ -107,8 +107,8 @@ public class MixinMinecraft {
    )
    private void runTick(CallbackInfo ci) {
       long currentTime = System.nanoTime() / 1000000L;
-      int deltaTime = (int)(currentTime - this.naven_Modern$lastFrame);
-      this.naven_Modern$lastFrame = currentTime;
+      int deltaTime = (int)(currentTime - this.nodex_Modern$lastFrame);
+      this.nodex_Modern$lastFrame = currentTime;
       AnimationUtils.delta = deltaTime;
    }
 
