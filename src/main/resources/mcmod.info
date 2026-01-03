@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "NodeX",
+    "name": "NodeX",
+    "description": "A Example Mod",
+    "version": "${version}",
+    "mcversion": "1.20.1",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["The_hz"],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]

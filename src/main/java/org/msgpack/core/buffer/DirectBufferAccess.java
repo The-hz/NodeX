@@ -20,7 +20,7 @@ class DirectBufferAccess {
    }
 
    private static void setupCleanerJava9(ByteBuffer direct) {
-      Object obj = AccessController.doPrivileged(new PrivilegedAction<Object>() {
+      @SuppressWarnings("removal") Object obj = AccessController.doPrivileged(new PrivilegedAction<Object>() {
          @Override
          public Object run() {
             return DirectBufferAccess.getInvokeCleanerMethod(direct);
