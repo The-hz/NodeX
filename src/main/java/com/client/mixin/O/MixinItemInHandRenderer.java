@@ -1,7 +1,7 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Client;
-import com.client.obsoverlay.events.impl.EventUpdateHeldItem;
+import com.client.clients.Client;
+import com.client.clients.utils.events.impl.EventUpdateHeldItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.ItemInHandRenderer;

@@ -1,7 +1,7 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Client;
-import com.client.obsoverlay.events.impl.EventUpdateFoV;
+import com.client.clients.Client;
+import com.client.clients.utils.events.impl.EventUpdateFoV;
 import net.minecraft.client.player.AbstractClientPlayer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

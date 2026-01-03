@@ -1,7 +1,7 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Client;
-import com.client.obsoverlay.events.impl.EventRotationAnimation;
+import com.client.clients.Client;
+import com.client.clients.utils.events.impl.EventRotationAnimation;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;

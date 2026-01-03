@@ -1,7 +1,7 @@
 package com.client.mixin.O;
 
 import com.client.mixin.O.accessors.ShapeIndexBufferAccessor;
-import com.client.obsoverlay.utils.renderer.GL;
+import com.client.clients.util.renderer.GL;
 import com.mojang.blaze3d.systems.RenderSystem.AutoStorageIndexBuffer;
 import com.mojang.blaze3d.vertex.VertexBuffer;
 import com.mojang.blaze3d.vertex.BufferBuilder.DrawState;

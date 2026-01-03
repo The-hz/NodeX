@@ -1,11 +1,11 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Client;
-import com.client.obsoverlay.events.impl.EventFallFlying;
-import com.client.obsoverlay.events.impl.EventJump;
-import com.client.obsoverlay.events.impl.EventRotationAnimation;
-import com.client.obsoverlay.modules.impl.render.AntiNausea;
-import com.client.obsoverlay.modules.impl.render.FullBright;
+import com.client.clients.Client;
+import com.client.clients.utils.events.impl.EventFallFlying;
+import com.client.clients.utils.events.impl.EventJump;
+import com.client.clients.utils.events.impl.EventRotationAnimation;
+import com.client.clients.features.modules.impl.render.AntiNausea;
+import com.client.clients.features.modules.impl.render.FullBright;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;

@@ -1,8 +1,8 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Client;
-import com.client.obsoverlay.events.impl.EventServerSetPosition;
-import com.client.obsoverlay.utils.HttpUtils;
+import com.client.clients.Client;
+import com.client.clients.utils.events.impl.EventServerSetPosition;
+import com.client.clients.util.client.HttpUtils;
 import java.io.IOException;
 import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.network.Connection;

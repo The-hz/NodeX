@@ -1,12 +1,12 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Client;
-import com.client.obsoverlay.events.api.types.EventType;
-import com.client.obsoverlay.events.impl.EventClick;
-import com.client.obsoverlay.events.impl.EventRunTicks;
-import com.client.obsoverlay.events.impl.EventShutdown;
-import com.client.obsoverlay.modules.impl.render.Glow;
-import com.client.obsoverlay.utils.AnimationUtils;
+import com.client.clients.Client;
+import com.client.clients.utils.events.api.types.EventType;
+import com.client.clients.utils.events.impl.EventClick;
+import com.client.clients.utils.events.impl.EventRunTicks;
+import com.client.clients.utils.events.impl.EventShutdown;
+import com.client.clients.features.modules.impl.render.Glow;
+import com.client.clients.util.renderer.AnimationUtils;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.Minecraft;

@@ -1,7 +1,7 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Client;
-import com.client.obsoverlay.events.impl.EventMoveInput;
+import com.client.clients.Client;
+import com.client.clients.utils.events.impl.EventMoveInput;
 import net.minecraft.client.player.Input;
 import net.minecraft.client.player.KeyboardInput;
 import org.spongepowered.asm.mixin.Mixin;

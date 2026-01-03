@@ -1,10 +1,10 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Client;
-import com.client.obsoverlay.events.api.types.EventType;
-import com.client.obsoverlay.events.impl.EventMotion;
-import com.client.obsoverlay.events.impl.EventSlowdown;
-import com.client.obsoverlay.events.impl.EventUpdate;
+import com.client.clients.Client;
+import com.client.clients.utils.events.api.types.EventType;
+import com.client.clients.utils.events.impl.EventMotion;
+import com.client.clients.utils.events.impl.EventSlowdown;
+import com.client.clients.utils.events.impl.EventUpdate;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;

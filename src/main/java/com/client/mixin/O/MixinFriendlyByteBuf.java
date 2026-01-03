@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.modules.impl.render.NameProtect;
+import com.client.clients.features.modules.impl.render.NameProtect;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Component.Serializer;

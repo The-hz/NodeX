@@ -1,8 +1,8 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Client;
-import com.client.obsoverlay.events.impl.EventDestroyBlock;
-import com.client.obsoverlay.events.impl.EventPositionItem;
+import com.client.clients.Client;
+import com.client.clients.utils.events.impl.EventDestroyBlock;
+import com.client.clients.utils.events.impl.EventPositionItem;
 import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.client.multiplayer.MultiPlayerGameMode;
 import net.minecraft.core.BlockPos;

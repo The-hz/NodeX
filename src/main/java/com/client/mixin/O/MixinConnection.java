@@ -1,10 +1,10 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Client;
-import com.client.obsoverlay.events.api.types.EventType;
-import com.client.obsoverlay.events.impl.EventGlobalPacket;
-import com.client.obsoverlay.utils.HttpUtils;
-import com.client.obsoverlay.utils.NetworkUtils;
+import com.client.clients.Client;
+import com.client.clients.utils.events.api.types.EventType;
+import com.client.clients.utils.events.impl.EventGlobalPacket;
+import com.client.clients.util.client.HttpUtils;
+import com.client.clients.util.client.NetworkUtils;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.SimpleChannelInboundHandler;
 import java.io.IOException;

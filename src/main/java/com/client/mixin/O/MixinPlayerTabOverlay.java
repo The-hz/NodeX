@@ -1,8 +1,8 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Client;
-import com.client.obsoverlay.events.api.types.EventType;
-import com.client.obsoverlay.events.impl.EventRenderTabOverlay;
+import com.client.clients.Client;
+import com.client.clients.utils.events.api.types.EventType;
+import com.client.clients.utils.events.impl.EventRenderTabOverlay;
 import java.util.List;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.components.PlayerTabOverlay;

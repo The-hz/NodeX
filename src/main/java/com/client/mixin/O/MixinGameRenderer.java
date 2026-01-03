@@ -1,12 +1,11 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Client;
-import com.client.obsoverlay.events.impl.EventRender;
-import com.client.obsoverlay.events.impl.EventRender2D;
-import com.client.obsoverlay.events.impl.EventRenderAfterWorld;
-import com.client.obsoverlay.modules.impl.render.FullBright;
-import com.client.obsoverlay.modules.impl.render.MotionBlur;
-import com.client.obsoverlay.modules.impl.render.NoHurtCam;
+import com.client.clients.Client;
+import com.client.clients.utils.events.impl.EventRender;
+import com.client.clients.utils.events.impl.EventRender2D;
+import com.client.clients.utils.events.impl.EventRenderAfterWorld;
+import com.client.clients.features.modules.impl.render.FullBright;
+import com.client.clients.features.modules.impl.render.NoHurtCam;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -61,17 +60,6 @@ public class MixinGameRenderer {
       if (module.isEnabled()) {
          cir.setReturnValue(module.brightness.getCurrentValue());
          cir.cancel();
-      }
-   }
-
-   @Inject(
-      method = {"render"},
-      at = {@At("TAIL")}
-   )
-   public void render(float tickDelta, long startTime, boolean tick, CallbackInfo ci) {
-      MotionBlur motionblur = MotionBlur.instance;
-      if (motionblur.isEnabled() && this.minecraft.player != null && motionblur.shader != null) {
-         motionblur.shader.process(tickDelta);
       }
    }
 

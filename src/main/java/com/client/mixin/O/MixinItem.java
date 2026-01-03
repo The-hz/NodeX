@@ -1,7 +1,7 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Client;
-import com.client.obsoverlay.events.impl.EventUseItemRayTrace;
+import com.client.clients.Client;
+import com.client.clients.utils.events.impl.EventUseItemRayTrace;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import org.spongepowered.asm.mixin.Mixin;

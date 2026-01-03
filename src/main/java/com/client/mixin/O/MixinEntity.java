@@ -1,10 +1,10 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Client;
-import com.client.obsoverlay.events.impl.EventRayTrace;
-import com.client.obsoverlay.events.impl.EventStrafe;
-import com.client.obsoverlay.events.impl.EventStuckInBlock;
-import com.client.obsoverlay.utils.BlinkingPlayer;
+import com.client.clients.Client;
+import com.client.clients.utils.events.impl.EventRayTrace;
+import com.client.clients.utils.events.impl.EventStrafe;
+import com.client.clients.utils.events.impl.EventStuckInBlock;
+import com.client.clients.util.client.ingame.entity.player.BlinkingPlayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.block.state.BlockState;

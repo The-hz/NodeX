@@ -1,7 +1,7 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Client;
-import com.client.obsoverlay.modules.impl.render.AntiBlindness;
+import com.client.clients.Client;
+import com.client.clients.features.modules.impl.render.AntiBlindness;
 import net.minecraft.client.renderer.FogRenderer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;

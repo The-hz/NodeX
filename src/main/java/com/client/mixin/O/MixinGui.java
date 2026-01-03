@@ -1,11 +1,11 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Client;
-import com.client.obsoverlay.events.api.types.EventType;
-import com.client.obsoverlay.events.impl.EventRenderScoreboard;
-import com.client.obsoverlay.events.impl.EventSetTitle;
-import com.client.obsoverlay.modules.impl.render.NoRender;
-import com.client.obsoverlay.modules.impl.render.Scoreboard;
+import com.client.clients.Client;
+import com.client.clients.utils.events.api.types.EventType;
+import com.client.clients.utils.events.impl.EventRenderScoreboard;
+import com.client.clients.utils.events.impl.EventSetTitle;
+import com.client.clients.features.modules.impl.render.NoRender;
+import com.client.clients.features.modules.impl.render.Scoreboard;
 import javax.annotation.Nullable;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;

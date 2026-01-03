@@ -1,6 +1,6 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.utils.BlinkingPlayer;
+import com.client.clients.util.client.ingame.entity.player.BlinkingPlayer;
 import java.util.List;
 import java.util.function.Predicate;
 import net.minecraft.world.entity.Entity;

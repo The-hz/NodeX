@@ -1,9 +1,9 @@
 package com.client.mixin.O;
 
-import com.client.obsoverlay.Client;
-import com.client.obsoverlay.events.impl.EventAttackSlowdown;
-import com.client.obsoverlay.events.impl.EventAttackYaw;
-import com.client.obsoverlay.events.impl.EventStayingOnGroundSurface;
+import com.client.clients.Client;
+import com.client.clients.utils.events.impl.EventAttackSlowdown;
+import com.client.clients.utils.events.impl.EventAttackYaw;
+import com.client.clients.utils.events.impl.EventStayingOnGroundSurface;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
